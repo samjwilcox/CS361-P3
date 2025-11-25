@@ -93,5 +93,7 @@ public class TMSimulator {
 
         System.out.println("Machine halted in state: " + tm.getCurrentState());
         System.out.println("Final tape: " + tm.getTapeSnapshot());
+        System.out.println("Output length: " + tm.getOutputLength());
+        System.out.println("Sum of symbols: " + tm.getTapeSum());
     }
 }

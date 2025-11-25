@@ -90,4 +90,22 @@ public class TuringMachine {
     public String getTapeSnapshot() {
         return tape.getTapeWindow(10);
     }
+
+    /**
+     * Returns the sum of all numeric symbols currently stored on the tape.
+     *
+     * @return integer sum of digits on the tape.
+     */
+    public int getTapeSum() {
+        return tape.sumSymbols();
+    }
+
+    /**
+     * Returns the output length (number of non-blank cells) on the tape.
+     *
+     * @return integer count of non-blank tape cells.
+     */
+    public int getOutputLength() {
+        return tape.outputLength();
+    }
 }

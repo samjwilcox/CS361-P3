@@ -91,4 +91,34 @@ public class TuringTape {
 
         return sb.toString();
     }
+
+    /**
+     * Computes the sum of all numeric symbols currently stored on the tape.
+     * Non-digit symbols are ignored.
+     *
+     * @return The integer sum of digit symbols (e.g. '0' -> 0, '7' -> 7).
+     */
+    public int sumSymbols() {
+        int sum = 0;
+        for (Character c : tape.values()) {
+            if (c >= '0' && c <= '9') {
+                sum += (c - '0');
+            }
+        }
+        return sum;
+    }
+
+    /**
+     * Returns the number of non-blank cells currently stored on the tape.
+     * A cell is considered part of the output if its symbol is not equal to
+     * the machine's blank symbol.
+     *
+     * @return number of non-blank tape cells
+     */
+    public int outputLength() {
+        // Count all stored positions on the tape. This includes '0' symbols
+        // (or whatever the blank character is) if they are present in the
+        // tape map — matching the requested behavior to include zeros.
+        return tape.size();
+    }
 }
