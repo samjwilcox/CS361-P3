@@ -77,23 +77,35 @@ public class TMSimulator {
         char blank = '0';
         TuringMachine tm = new TuringMachine(rules, "0", acceptStates, new HashSet<>(), input, blank);
 
-        // Run the machine step by step with a step limit (since it seems test file 5 is an infinite loop machine).
-        final int MAX_STEPS = 10000;
+        // Run the machine step by step until it halts. Print progress every
+        // `PRINT_INTERVAL` steps to avoid overwhelming the console. Keep a
+        // large safety cap so we don't run forever in case of a real infinite
+        // loop. Measure elapsed time for the calculation and print it.
+        final int PRINT_INTERVAL = 1000000;
+        final int MAX_STEPS = 1_000_000_000; // large safety cap
         int stepCount = 0;
 
+        long startTime = System.nanoTime();
         while (tm.step()) {
             stepCount++;
-            System.out.println("State: " + tm.getCurrentState() + " | Tape: " + tm.getTapeSnapshot());
+            if (stepCount % PRINT_INTERVAL == 0) {
+                System.out.println("Step " + stepCount + " | State: " + tm.getCurrentState() + " | Tape: " + tm.getTapeSnapshot());
+            }
 
             if (stepCount >= MAX_STEPS) {
                 System.out.println("Terminating after " + MAX_STEPS + " steps — possible infinite loop");
                 break;
             }
         }
+        long endTime = System.nanoTime();
+        long elapsedNanos = endTime - startTime;
+        double elapsedMillis = elapsedNanos / 1_000_000.0;
+        double elapsedSeconds = elapsedNanos / 1_000_000_000.0;
 
         System.out.println("Machine halted in state: " + tm.getCurrentState());
         System.out.println("Final tape: " + tm.getTapeSnapshot());
         System.out.println("Output length: " + tm.getOutputLength());
-        System.out.println("Sum of symbols: " + tm.getTapeSum());
+        System.out.println("Sum of output tape: " + tm.getTapeSum());
+        System.out.printf("Time taken: %.3f ms (%.3f s)\n", elapsedMillis, elapsedSeconds);
     }
 }
