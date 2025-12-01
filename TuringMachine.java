@@ -90,10 +90,10 @@ public class TuringMachine {
      * Returns a short snapshot of the tape around the head for visualization.
      * 
      * @return A string showing the region of tape centered at the head,
-     *         typically 21 characters wide (+-10 from the head).
+     *         typically the full visited span (min..max) of the tape.
      */
     public String getTapeSnapshot() {
-        return tape.getTapeWindow(10);
+        return tape.getVisitedSpan();
     }
 
     /**

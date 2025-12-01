@@ -99,6 +99,32 @@ public class TuringTape {
     }
 
     /**
+     * Returns the full visited/written span of the tape (from minIndex to
+     * maxIndex inclusive) as a string. This is useful for printing the exact
+     * output region rather than a fixed-radius window.
+     *
+     * @return String containing the tape contents from minIndex..maxIndex
+     */
+    public String getVisitedSpan() {
+        // Compute min/max indices dynamically from current tape keys and
+        // the head position. This avoids relying on external trackers.
+        int min = head;
+        int max = head;
+        if (!tape.isEmpty()) {
+            for (Integer idx : tape.keySet()) {
+                if (idx < min) min = idx;
+                if (idx > max) max = idx;
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = min; i <= max; i++) {
+            sb.append(tape.getOrDefault(i, blank));
+        }
+        return sb.toString();
+    }
+
+    /**
      * Computes the sum of all numeric symbols currently stored on the tape.
      * Non-digit symbols are ignored.
      *
