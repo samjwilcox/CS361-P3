@@ -1,5 +1,11 @@
 /**
- * P3 Project
+ * 
+ * This is the main file for the Turing Machine Simulator. It inputs a turing machine through a text file.
+ * 
+ * TMSimulator.java
+ * November 30, 2025
+ * @author Sam Wilcox
+ * @author Tyler Fernandez
  */
 
 import java.io.*;

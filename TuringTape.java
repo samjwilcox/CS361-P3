@@ -1,5 +1,11 @@
 /**
- * P3 Project
+ * 
+ * This file is responsible for representing the tape of the Turing Machine.
+ * 
+ * TuringTape.java
+ * November 30, 2025
+ * @author Sam Wilcox
+ * @author Tyler Fernandez
  */
 
 import java.util.*;

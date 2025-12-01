@@ -1,7 +1,12 @@
 /**
- * P3 Project
+ * 
+ * This file is responsible for representing the Turing Machine itself.
+ * 
+ * TuringMachine.java
+ * November 30, 2025
+ * @author Sam Wilcox
+ * @author Tyler Fernandez
  */
-
 import java.util.*;
 
 /**

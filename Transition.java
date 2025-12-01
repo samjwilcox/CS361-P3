@@ -1,5 +1,11 @@
 /**
- * P3 Project
+ * 
+ * This file is responsible for representing a single transition rule of the Turing Machine.
+ * 
+ * Transition.java
+ * November 30, 2025
+ * @author Sam Wilcox
+ * @author Tyler Fernandez
  */
 
 import java.util.*;
