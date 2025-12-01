@@ -95,11 +95,11 @@ public class TMSimulator {
         while (tm.step()) {
             stepCount++;
             if (stepCount % PRINT_INTERVAL == 0) {
-                System.out.println("Step " + stepCount + " | State: " + tm.getCurrentState() + " | Tape: " + tm.getTapeSnapshot());
+                // System.out.println("Step " + stepCount + " | State: " + tm.getCurrentState() + " | Tape: " + tm.getTapeSnapshot());
             }
 
             if (stepCount >= MAX_STEPS) {
-                System.out.println("Terminating after " + MAX_STEPS + " steps — possible infinite loop");
+                // System.out.println("Terminating after " + MAX_STEPS + " steps — possible infinite loop");
                 break;
             }
         }
@@ -108,10 +108,12 @@ public class TMSimulator {
         double elapsedMillis = elapsedNanos / 1_000_000.0;
         double elapsedSeconds = elapsedNanos / 1_000_000_000.0;
 
-        System.out.println("Machine halted in state: " + tm.getCurrentState());
-        System.out.println("Final tape: " + tm.getTapeSnapshot());
-        System.out.println("Output length: " + tm.getOutputLength());
-        System.out.println("Sum of output tape: " + tm.getTapeSum());
-        System.out.printf("Time taken: %.3f ms (%.3f s)\n", elapsedMillis, elapsedSeconds);
+
+        // Testing output
+        // System.out.println("Machine halted in state: " + tm.getCurrentState());
+        System.out.println(tm.getTapeSnapshot());
+        // System.out.println("Output length: " + tm.getOutputLength());
+        // System.out.println("Sum of output tape: " + tm.getTapeSum());
+        // System.out.printf("Time taken: %.3f ms (%.3f s)\n", elapsedMillis, elapsedSeconds);
     }
 }
